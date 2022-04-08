@@ -28,21 +28,22 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    erb(:play)
+    p $game.turn.dead?
+    if $game.turn.dead?
+      erb(:dead)
+    else
+      erb(:play)
+    end
   end
 
   get '/attack' do
     $game.attack($game.defending_player)
-    if $game.defending_player.dead?
-      redirect '/dead'
-    else
-      erb(:attack)
-    end
+    erb(:attack)
   end
 
-  get '/dead' do
-    erb(:dead)
-  end
+  # get '/dead' do
+  #   erb(:dead)
+  # end
 
   run! if app_file == $0
 
