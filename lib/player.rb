@@ -8,10 +8,10 @@ class Player
     end
 
     def take_damage
-        @hit_points -= 10
+        @hit_points -= rand(51)
     end
 
     def dead?
-        @hit_points == 0
+        @hit_points <= 0
     end
 end
