@@ -32,7 +32,9 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    $game.attack($game.second_player)
+    p "Array excluding player whose turn it is #{$game.players.select { |player| player != @turn }}"
+    p "Outputting $game.defending_player at the beginning of get /attack: #{$game.defending_player.name}"
+    $game.attack($game.defending_player)
     erb(:attack)
   end
 
