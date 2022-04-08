@@ -32,10 +32,16 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    p "Array excluding player whose turn it is #{$game.players.select { |player| player != @turn }}"
-    p "Outputting $game.defending_player at the beginning of get /attack: #{$game.defending_player.name}"
     $game.attack($game.defending_player)
-    erb(:attack)
+    if $game.defending_player.dead?
+      redirect '/dead'
+    else
+      erb(:attack)
+    end
+  end
+
+  get '/dead' do
+    erb(:dead)
   end
 
   run! if app_file == $0
