@@ -19,8 +19,8 @@ describe Game do
 
     describe '#attack' do
         it 'attacks the player passed in as an argument' do
-            allow(player).to receive(:take_damage).and_return(player)
-            expect(game.attack(player)).to eq player
+            expect(player).to receive(:take_damage)
+            game.attack(player)
         end
     end
 
