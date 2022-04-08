@@ -4,7 +4,8 @@ class Game
     def initialize(first_player=Player.new, second_player=Player.new)
         @first_player = first_player
         @second_player = second_player
-        @turn = first_player.name
+        @players = [@first_player, @second_player]
+        @turn = @players[0]
     end
 
     def attack(attacked_player)
@@ -13,6 +14,6 @@ class Game
     end
 
     def change_turn
-        turn == first_player.name ? @turn = second_player.name : @turn = first_player.name
+        @turn == @players[0] ? @turn = @players[1] : @turn = @players[0]
     end
 end

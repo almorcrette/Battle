@@ -2,7 +2,7 @@
 
 <p><%= $game.second_player.name %> Hit Points: <%= $game.second_player.hit_points %> HPs</p>
 
-<p><%= $game.turn %>'s turn...</p>
+<p><%= $game.turn.name %>'s turn...</p>
 <form action='/attack' method='get'>
   <input type='submit' value='Attack' >
 </form>

@@ -11,10 +11,13 @@ feature 'Switching turns' do
     sign_in_and_play
     click_on('Attack')
     click_on('Continue')
-    expect { game.change_turn }.to change { game.turn }.from("Megasaur").to("Superman")
+    expect { game.change_turn }.to change { game.turn }.from(game.first_player).to(game.second_player)
   end
 
   scenario 'displays whose turn it is' do
+    sign_in_and_play
+    click_on('Attack')
+    click_on('Continue')
     expect(page).to have_content "Superman's turn..."
   end
 end

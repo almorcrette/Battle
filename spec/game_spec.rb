@@ -26,9 +26,9 @@ describe Game do
 
     describe '#change_turn' do
         it 'switches turn after attack' do
-            allow(player).to receive(:take_damage)
-            game.attack(player)
-            expect(game.turn).to eq 2
+            allow(another_player).to receive(:take_damage)
+            game.attack(another_player)
+            expect(game.turn).to eq another_player
         end
     end
 
